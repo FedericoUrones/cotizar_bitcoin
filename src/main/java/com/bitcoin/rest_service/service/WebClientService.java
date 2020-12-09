@@ -15,10 +15,12 @@ public class WebClientService {
         this.webClient = webClientBuilder.baseUrl(bitcoinUrl).build();
     }
 
+    /**
+     * Calling Bitcoin Price API
+     * @return
+     */
     public Mono<String> callService() {
-        System.out.println("callService");
-        return this.webClient.get().uri("/api/last_price/BTC/USD")
-                .retrieve().bodyToMono(String.class);
+        return this.webClient.get().uri("/api/last_price/BTC/USD").retrieve().bodyToMono(String.class);
     }
 
 }

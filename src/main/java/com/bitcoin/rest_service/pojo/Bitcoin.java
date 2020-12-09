@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class Bitcoin {
-    private String /*lprice, */curr1, curr2;
+    private String curr1, curr2;
     private BigDecimal lprice;
     private long timeStampSeconds;
 }

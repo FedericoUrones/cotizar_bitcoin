@@ -11,19 +11,19 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 
 @Configuration
 public class Router {
-    @Bean
-    public RouterFunction<ServerResponse> route(Handler handler) {
-  
-      return RouterFunctions
-        .route(
-          RequestPredicates.GET("/getAllBitcoins"), handler::getBitcoins)
-        .and(
-          RouterFunctions.route(RequestPredicates.GET("/getBitcoinByTimestamp/{timestamp}"), handler::getBitcoinByTimeStamp)
-        )
-        .and(
-          RouterFunctions.route(RequestPredicates.GET("/getBitcoinBetweenTimestamp/{timestampStart}/{timestampEnd}"), handler::getAverageBetweenTimeStamps)
-        )
-        ;
-      //TODO: agregar las operaciones que faltan acá y sacar la de arriba si no hace falta
-    }
+
+  /**
+   * Adding routes
+   * @param handler
+   * @return routes
+   */
+  @Bean
+  public RouterFunction<ServerResponse> route(Handler handler) {
+
+    return RouterFunctions.route(RequestPredicates.GET("/getAllBitcoins"), handler::getBitcoins)
+        .and(RouterFunctions.route(RequestPredicates.GET("/getBitcoinByTimestamp/{timestamp}"),
+            handler::getBitcoinByTimeStamp))
+        .and(RouterFunctions.route(RequestPredicates.GET("/getBitcoinBetweenTimestamp/{timestampStart}/{timestampEnd}"),
+            handler::getAverageBetweenTimeStamps));
+  }
 }

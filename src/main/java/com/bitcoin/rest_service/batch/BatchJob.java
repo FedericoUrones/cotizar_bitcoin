@@ -35,9 +35,12 @@ public class BatchJob {
 
     ObjectMapper objectMapper = new ObjectMapper();
 
+    /**
+     * Calls Bitcoin price service and adds an item into allBitcoinData every fixedRate milliseconds
+     */
     @Scheduled(fixedRate = fixedRate, initialDelay = initialDelay)
     public void getBitcoin() {
-        LOGGER.info("Tratando de obtener Cotización de Bitcoin...");
+        LOGGER.info("Trying to obtain Bitcoin Price...");
         Mono<String> bitcoin = webClientService.callService();
         bitcoin.doOnSuccess(item -> {
             try {
@@ -46,14 +49,13 @@ public class BatchJob {
                 newBitcoin.setTimeStampSeconds(instant.getEpochSecond());
                 allBitcoinData.addBitcoin(newBitcoin);
             } catch (JsonMappingException e) {
-                LOGGER.error("Error al intentar mapear Cotización de Bitcoin", e.getLocalizedMessage());
+                LOGGER.error("Error while trying to map new Bitcoin price", e.getLocalizedMessage());
             } catch (JsonProcessingException e) {
-                LOGGER.error("Error al intentar mapear Cotización de Bitcoin", e.getLocalizedMessage());
+                LOGGER.error("Error while trying to process new Bitcoin price", e.getLocalizedMessage());
             }
-            LOGGER.info("Nueva Cotización de Bitcoin agregada");
-            System.out.println(allBitcoinData.getBitcoins().size());
+            LOGGER.info("New Bitcoin price added");
         }).doOnError(err -> {
-            LOGGER.error("Error al intentar obtener Cotización de Bitcoin", err.getLocalizedMessage());
+            LOGGER.error("Error while trying to obtain new Bitcoin price", err.getLocalizedMessage());
         }).subscribe();
     }
 
