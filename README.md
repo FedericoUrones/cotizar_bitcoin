@@ -1,6 +1,6 @@
 # Cotizar_Bitcoin
 
-Cotizar_Bitcoin is a Java API done to get Bitcoin Prices using WebFlux
+Cotizar_Bitcoin is a Java REST API done to get Bitcoin Prices using Spring WebFlux
 
 ## Requirements
 
@@ -18,6 +18,64 @@ Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/
 ```shell
 mvn spring-boot:run
 ```
+## REST API
+
+### Get list of Bitcoins Prices
+
+#### Request
+
+`GET /getAllBitcoins`
+
+    curl -i -H 'Accept: application/json' http://localhost:8080/getAllBitcoins
+
+#### Response
+
+    HTTP/1.1 200 OK
+    Date: Thu, 24 Feb 2011 12:36:30 GMT
+    Status: 200 OK
+    Connection: close
+    Content-Type: application/json
+    Content-Length: 2
+
+    []
+
+### Get Bitcoin Price filtered by timestamp
+
+#### Request
+
+`GET /getBitcoinByTimestamp/{timestamp}`
+
+    curl -i -H 'Accept: application/json' http://localhost:8080/getBitcoinByTimestamp/{timestamp}
+
+#### Response
+
+    HTTP/1.1 200 OK
+    Date: Thu, 24 Feb 2011 12:36:30 GMT
+    Status: 200 OK
+    Connection: close
+    Content-Type: application/json
+    Content-Length: 2
+
+    []
+
+### Get Bitcoin Average Price and Max Value Percentage Difference between two Timestamps
+
+#### Request
+
+`GET /getBitcoinBetweenTimestamp/{timestampStart}/{timestampEnd}`
+
+    curl -i -H 'Accept: application/json' http://localhost:8080/getBitcoinBetweenTimestamp/{timestampStart}/{timestampEnd}
+
+#### Response
+
+    HTTP/1.1 200 OK
+    Date: Thu, 24 Feb 2011 12:36:30 GMT
+    Status: 200 OK
+    Connection: close
+    Content-Type: application/json
+    Content-Length: 2
+
+    []
 
 ## Copyright
 
