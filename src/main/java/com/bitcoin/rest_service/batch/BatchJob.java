@@ -12,6 +12,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.lang.invoke.MethodHandles;
+import java.time.Instant;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,7 +41,10 @@ public class BatchJob {
         Mono<String> bitcoin = webClientService.callService();
         bitcoin.doOnSuccess(item -> {
             try {
-                allBitcoinData.getBitcoins().add(objectMapper.readValue(item, Bitcoin.class));
+                Bitcoin newBitcoin = objectMapper.readValue(item, Bitcoin.class);
+                Instant instant = Instant.now();
+                newBitcoin.setTimeStampSeconds(instant.getEpochSecond());
+                allBitcoinData.addBitcoin(newBitcoin);
             } catch (JsonMappingException e) {
                 LOGGER.error("Error al intentar mapear Cotización de Bitcoin", e.getLocalizedMessage());
             } catch (JsonProcessingException e) {

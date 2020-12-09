@@ -1,6 +1,6 @@
 package com.bitcoin.rest_service.router;
 
-import com.bitcoin.rest_service.component.Handler;
+import com.bitcoin.rest_service.handler.Handler;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +15,13 @@ public class Router {
     public RouterFunction<ServerResponse> route(Handler handler) {
   
       return RouterFunctions
-        .route(RequestPredicates.GET("/getBitcoins"), handler::getBitcoins);
+        .route(
+          RequestPredicates.GET("/getAllBitcoins"), handler::getBitcoins)
+        .and(
+          RouterFunctions.route(RequestPredicates.GET("/getBitcoinByTimestamp/{timestamp}"), handler::getBitcoinByTimeStamp)
+        )
+        
+        ;
       //TODO: agregar las operaciones que faltan acá y sacar la de arriba si no hace falta
     }
 }
