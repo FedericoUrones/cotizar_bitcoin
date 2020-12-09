@@ -20,7 +20,9 @@ public class Router {
         .and(
           RouterFunctions.route(RequestPredicates.GET("/getBitcoinByTimestamp/{timestamp}"), handler::getBitcoinByTimeStamp)
         )
-        
+        .and(
+          RouterFunctions.route(RequestPredicates.GET("/getBitcoinBetweenTimestamp/{timestampStart}/{timestampEnd}"), handler::getAverageBetweenTimeStamps)
+        )
         ;
       //TODO: agregar las operaciones que faltan acá y sacar la de arriba si no hace falta
     }

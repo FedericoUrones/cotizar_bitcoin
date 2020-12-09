@@ -22,18 +22,18 @@ public class Handler {
                 .body(BodyInserters.fromValue(allBitcoinData.getBitcoins()));
     }
 
-    // timestamp en segundos
+    // timestamp: en segundos
     public Mono<ServerResponse> getBitcoinByTimeStamp(ServerRequest request) {
         long timestamp = Long.parseLong(request.pathVariable("timestamp"));
         return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
                 .body(BodyInserters.fromValue(allBitcoinData.getBitcoinByTimeStamp(timestamp)));
     }
 
-    // timestamp en segundos
-    public Mono<ServerResponse> getBitcoinBetweenTimeStamps(ServerRequest request) {
+    // timestamp: en segundos
+    public Mono<ServerResponse> getAverageBetweenTimeStamps(ServerRequest request) {
         long timestampStart = Long.parseLong(request.pathVariable("timestampStart"));
         long timestampEnd = Long.parseLong(request.pathVariable("timestampEnd"));
         return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
-                .body(BodyInserters.fromValue(allBitcoinData.getBitcoinBetweenTimeStamps(timestampStart, timestampEnd)));
+                .body(BodyInserters.fromValue(allBitcoinData.getAverageBetweenTimeStamps(timestampStart, timestampEnd)));
     }
 }
