@@ -37,7 +37,26 @@ mvn spring-boot:run
     Content-Type: application/json
     Content-Length: 2
 
-    []
+    [
+        {
+            "curr1": "BTC",
+            "curr2": "USD",
+            "lprice": 18586.8,
+            "timeStampSeconds": 1607551523
+        },
+        {
+            "curr1": "BTC",
+            "curr2": "USD",
+            "lprice": 18586.8,
+            "timeStampSeconds": 1607551532
+        },
+        {
+            "curr1": "BTC",
+            "curr2": "USD",
+            "lprice": 18586.8,
+            "timeStampSeconds": 1607551542
+        }
+    ]
 
 ### Get Bitcoin Price filtered by timestamp
 
@@ -56,7 +75,12 @@ mvn spring-boot:run
     Content-Type: application/json
     Content-Length: 2
 
-    []
+    {
+        "curr1": "BTC",
+        "curr2": "USD",
+        "lprice": 18586.8,
+        "timeStampSeconds": 1607551523
+    }
 
 ### Get Bitcoin Average Price and Max Value Percentage Difference between two Timestamps
 
@@ -75,7 +99,10 @@ mvn spring-boot:run
     Content-Type: application/json
     Content-Length: 2
 
-    []
+    {
+        "average": 18579.54375,
+        "percentBetweenAverageAndMax": "0%"
+    }
 
 ## Copyright
 

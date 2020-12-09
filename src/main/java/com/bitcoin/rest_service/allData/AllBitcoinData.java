@@ -20,7 +20,7 @@ import lombok.Data;
 public class AllBitcoinData {
     private List<Bitcoin> bitcoins = new ArrayList<Bitcoin>();
     private BigDecimal maxPrice = BigDecimal.valueOf(0);
-    private MathContext mathContext = new MathContext(2, RoundingMode.CEILING); 
+    private MathContext mathContext = new MathContext(6, RoundingMode.HALF_UP); 
     private BigDecimal ONE_HUNDRED_BIG_DECIMAL = BigDecimal.valueOf(100);
 
     /**
@@ -57,7 +57,7 @@ public class AllBitcoinData {
                 .map(Bitcoin::getLprice).collect(Collectors.toList());
         BigDecimal sum = bitcoinPriceFilteredList.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        return (bitcoinPriceFilteredList.size() > 0) ? sum.divide(BigDecimal.valueOf(bitcoinPriceFilteredList.size()))
+        return (bitcoinPriceFilteredList.size() > 0) ? sum.divide(BigDecimal.valueOf(bitcoinPriceFilteredList.size()), mathContext)
                 : BigDecimal.ZERO;
     }
 
