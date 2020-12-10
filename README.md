@@ -20,7 +20,7 @@ mvn spring-boot:run
 ```
 ## Side note
 
-When talking about `timestamp` in the parameters, we're talking seconds timestamp. It can be taken from here
+When talking about `timestamp` in the parameters, we're talking about seconds timestamp. It can be taken from here:
 - [TimeStamp Converter](https://www.unixtimestamp.com/)
 - [List of Bitcoins Prices service](#get-list-of-bitcoins-prices)
 
