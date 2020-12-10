@@ -18,6 +18,12 @@ Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/
 ```shell
 mvn spring-boot:run
 ```
+## Side note
+
+When talking about `timestamp` in the parameters, we're talking seconds timestamp. It can be taken from here
+- [TimeStamp Converter](https://www.unixtimestamp.com/)
+- [List of Bitcoins Prices service](#get-list-of-bitcoins-prices)
+
 ## REST API
 
 ### Get list of Bitcoins Prices
