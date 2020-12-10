@@ -64,6 +64,10 @@ When talking about `timestamp` in the parameters, we're talking seconds timestam
         }
     ]
 
+#### Description
+
+Retrieves all Bitcoins Prices stored in the application.
+
 ### Get Bitcoin Price filtered by timestamp
 
 #### Request
@@ -88,6 +92,10 @@ When talking about `timestamp` in the parameters, we're talking seconds timestam
         "timeStampSeconds": 1607551523
     }
 
+#### Description
+
+Filters Bitcoins Prices based on input parameter: timestamp (in seconds). Application gets a new Bitcoin Price every 10 seconds, so if you want a Bitcoin Price in a timestamp, application will try to filter Bitcoin Prices in a range of 10 seconds.
+
 ### Get Bitcoin Average Price and Max Value Percentage Difference between two Timestamps
 
 #### Request
@@ -109,6 +117,12 @@ When talking about `timestamp` in the parameters, we're talking seconds timestam
         "average": 18579.54375,
         "percentBetweenAverageAndMax": "0%"
     }
+
+#### Description
+
+Filters Bitcoins Prices based on two input parameters: timestampStart and timestampEnd (in seconds). Application will filter all Bitcoin Pricess between those two timestamps and return following values:
+- average: Average Bitcoin Price between timestamps
+- percentBetweenAverageAndMax: Percentage difference between Max Bitcoin Price (all series) and average Bitcoin Price (mentioned above)
 
 ## Copyright
 
